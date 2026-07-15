@@ -1,0 +1,76 @@
+cd downloads  or cd C:\Users\Admin\Desktop\AWS_Program\pem files
+
+cd /var/www/html
+
+to remove default page:
+sudo rm index.html
+
+too write html file:
+sudo nano index.html
+
+restart apache:
+sudo systemctl restart apache2
+
+***************************************************************
+To see html file:
+
+Go to the website directory
+cd /var/www/html
+
+View the entire HTML file
+cat index.html
+
+*****************************************************************
+
+1. Connect to your EC2 instance
+ssh -i your-key.pem ubuntu@<EC2-Public-IP>
+
+2. Update package list
+sudo apt update
+
+3. Install Apache
+sudo apt install apache2 -y
+
+4. Start Apache
+sudo systemctl start apache2
+
+5. Enable Apache to start automatically after reboot
+sudo systemctl enable apache2
+
+6. Check Apache status
+sudo systemctl status apache2
+
+You should see something like:
+
+Active: active (running)
+
+7. Test Apache
+
+Open your browser and visit:
+
+http://<EC2-Public-IP>
+
+You should see the Apache2 Ubuntu Default Page.
+
+9. Go to the web directory
+cd /var/www/html
+
+10. Remove the default Apache page
+sudo rm index.html
+
+11. Create your website
+sudo nano index.html
+
+Paste your HTML code, then:
+
+Press Ctrl + O, then Enter (save)
+Press Ctrl + X (exit)
+
+12. Restart Apache
+sudo systemctl restart apache2
+
+13. View your website
+Open:
+http://<EC2-Public-IP>
+
+Your movie website should now be displayed.

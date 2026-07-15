@@ -1,0 +1,99 @@
+If you're using AWS CloudShell to connect to your Amazon RDS MySQL database, here are the commands you'll commonly need.
+
+1. Connect to the database
+mysql -h municipal-db.ctwo0ykggtl9.ap-south-1.rds.amazonaws.com -u admin -p
+
+Enter your password when prompted.
+
+2. Select the database
+USE municipal_db;
+
+3. Show all databases
+SHOW DATABASES;
+
+4. Show tables
+SHOW TABLES;
+
+5. Describe the complaints table
+DESCRIBE complaints;
+
+or
+
+DESC complaints;
+6. View all data
+SELECT * FROM complaints;
+
+7. View the latest complaints
+SELECT * FROM complaints
+ORDER BY created_at DESC;
+
+8. Count total complaints
+SELECT COUNT(*) AS total_complaints
+FROM complaints;
+
+9. View only important columns
+SELECT
+id,
+name,
+phone,
+location,
+complaint_type,
+detected_type,
+confidence,
+status,
+created_at
+FROM complaints;
+
+10. Delete all complaint records
+TRUNCATE TABLE complaints;
+
+11. Delete all records without resetting IDs
+DELETE FROM complaints;
+
+12. Reset AUTO_INCREMENT (after DELETE)
+ALTER TABLE complaints AUTO_INCREMENT = 1;
+
+13. Delete a specific complaint
+DELETE FROM complaints
+WHERE id = 1;
+
+14. Find complaints by type
+SELECT *
+FROM complaints
+WHERE complaint_type = 'Garbage';
+
+15. Find complaints by status
+SELECT *
+FROM complaints
+WHERE status = 'Pending';
+
+16. Update complaint status
+UPDATE complaints
+SET status = 'Resolved'
+WHERE id = 1;
+
+17. View only today's complaints
+SELECT *
+FROM complaints
+WHERE DATE(created_at) = CURDATE();
+
+18. Drop the table (⚠️ permanently deletes the table)
+DROP TABLE complaints;
+
+19. Exit MySQL
+EXIT;
+
+Useful commands for your project demo
+USE municipal_db;
+
+SHOW TABLES;
+
+SELECT * FROM complaints;
+
+SELECT COUNT(*) FROM complaints;
+
+TRUNCATE TABLE complaints;
+
+SELECT * FROM complaints;
+
+EXIT;
